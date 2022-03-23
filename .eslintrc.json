@@ -1,0 +1,37 @@
+{
+    "env": {
+        "browser": true,
+        "es2020": true,
+        "commonjs": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:vue/essential"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 11,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "vue"
+    ],
+    "rules": {
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "eqeqeq": [
+            "error",
+            "always"
+        ],
+        "vue/html-indent": "off"
+    }
+}
