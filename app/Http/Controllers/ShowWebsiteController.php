@@ -7,15 +7,10 @@ use App\Models\Website;
 
 class ShowWebsiteController extends Controller
 {
-    public function __construct()
+    public function index(Account $account, Website $website)
     {
-        $this->middleware(['auth', 'verified']);
-    }
+        $view = "templates.{$website->template->slug}";
 
-    public function __invoke(Account $account, Website $website)
-    {
-        dump('acc', $account, $website);
-
-        return view('home');
+        return view($view);
     }
 }

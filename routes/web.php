@@ -5,7 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ShowWebsiteController;
 
 Route::get('/', function () {
-    if (app()->environment('local')) {
+    if (app()->environment('development')) {
         if (!Auth::check()) {
             Auth::loginUsingId(2, true);
         }
@@ -18,7 +18,7 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('verified');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::prefix('users')->group(base_path('routes/web/user.php'));
 
@@ -29,7 +29,7 @@ Route::prefix('emails')->group(base_path('routes/web/email.php'));
 Route::prefix('accounts/{account}/websites')->group(base_path('routes/web/website.php'));
 
 Route::domain('{account:slug}.' . config('app.domain'))
-    ->get('{website:slug}', ShowWebsiteController::class)
+    ->get('{website:slug}', [ShowWebsiteController::class, 'index'])
     ->where([
         'account' => '^[\s\w-]*$',
         'website' => '^[\s\w-]*$',

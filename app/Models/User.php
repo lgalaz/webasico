@@ -12,16 +12,6 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable, SoftDeletes;
 
-    protected static function booted()
-    {
-        static::saved(function ($user) {
-            Account::create([
-                'user_id' => $user->user_id,
-                'name'    => $user->name,
-            ]);
-        });
-    }
-
     // This is needed because I changed the Id column name in the User model.
     protected $primaryKey = 'user_id';
 

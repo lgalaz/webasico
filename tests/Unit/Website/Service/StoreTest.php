@@ -46,11 +46,12 @@ class StoreTest extends TestCase
         $this->assertNull($firstWebsite->refresh()->deleted_at);
     }
 
-    public function test_it_creates_a_new_websites_when_name_exists_for_a_different_account()
+    public function test_it_can_create_a_new_website_when_name_exists_for_a_different_account()
     {
-        $user     = User::factory()->create();
+        $account  = Account::factory()->create();
+        $user = $account->user;
         $websites = Website::factory()->count(2)->create([
-            'account_id' => $user->account->account_id
+            'account_id' => $account->account_id
         ]);
 
         $firstWebsite = $websites->first();

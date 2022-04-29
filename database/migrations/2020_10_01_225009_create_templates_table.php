@@ -22,18 +22,6 @@ class CreateTemplatesTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
-
-        try {
-            DB::table('templates')->insert([
-                'name'        => 'custom',
-                'slug'        => 'custom',
-                'description' => 'Use your own custom template',
-                'img_src'     => 'https://picsum.photos/200/200/?image=25',
-            ]);
-            dump('Inserted Default Custom Template.');
-        } catch (\Exception $e) {
-            dump('Could not create custom template.', $e->getMessage());
-        }
     }
 
     /**

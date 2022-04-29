@@ -42,6 +42,6 @@ FLUSH PRIVILEGES;
   For this we can create the dump file with `touch dump.sqlite`. We need to make sure that the file has read write permissions (`chmod 775 dump.sqlite`).
 
 - Before every test run we need to ensure that the dump file is up to date. 
-  We can migrate the most recent dump as:
-  `php artisan migrate:fresh --database=sqlite_dump`
+  We can migrate the most recent dump as (need to add env testing cause telescope fails):
+  `php artisan migrate:fresh --seed --database=sqlite_dump --env=testing`
 

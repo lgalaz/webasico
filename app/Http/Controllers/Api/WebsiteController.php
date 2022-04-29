@@ -30,7 +30,6 @@ class WebsiteController extends Controller
     public function store(Account $account, WebsiteForm $request): JsonResponse
     {
         $params = request()->only(['name']);
-        $params['template_id'] = Template::where('slug', '=', 'custom')->firstOrFail()->template_id;
 
         $website = $this->service->store($account, $params);
 

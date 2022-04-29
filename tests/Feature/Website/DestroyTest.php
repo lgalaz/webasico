@@ -2,6 +2,7 @@
 
 namespace Tests\Feature\Website;
 
+use App\Models\Account;
 use Tests\TestCase;
 use App\Models\User;
 use App\Models\Website;
@@ -22,7 +23,8 @@ class DestroyTest extends TestCase
     {
         parent::setUp();
 
-        $this->user    = User::factory()->create();
+        $account = Account::factory()->create();
+        $this->user = $account->user;
         $this->website = Website::factory()->create([
             'account_id' => $this->user->account->account_id
         ]);

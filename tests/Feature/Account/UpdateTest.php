@@ -3,7 +3,6 @@
 namespace Tests\Feature\Account;
 
 use Tests\TestCase;
-use App\Models\User;
 use App\Models\Account;
 use Tests\ResetsDatabase;
 use Illuminate\Http\Response;
@@ -21,7 +20,8 @@ class UpdateTest extends TestCase
     {
         parent::setUp();
 
-        $this->user = User::factory()->create();
+        $account = Account::factory()->create();
+        $this->user = $account->user;
         $this->url  = route('api.account.update', [$this->user->account]);
     }
 

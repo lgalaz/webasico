@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Website;
 
+use App\Models\Account;
 use Tests\TestCase;
-use App\Models\User;
 use App\Models\Website;
 use Tests\ResetsDatabase;
 use Illuminate\Http\Response;
@@ -19,8 +19,8 @@ class StoreTest extends TestCase
     protected function setUp() : void
     {
         parent::setUp();
-
-        $this->user = User::factory()->create();
+        $account = Account::factory()->create();
+        $this->user = $account->user;
         $this->url  = route('api.website.store', [$this->user->account]);
     }
 

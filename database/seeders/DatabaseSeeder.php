@@ -16,9 +16,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->validateRunningEnvironment(['local', 'production']);
+        $this->validateRunningEnvironment(['local', 'testing', 'production']);
 
-        $this->call(TestUsersSeeder::class);
-        $this->call(TestTemplatesSeeder::class);
+        $this->call(UsersSeeder::class);
+        $this->call(TemplatesSeeder::class);
     }
 }

@@ -21,6 +21,9 @@ class WebsiteForm extends FormRequest
                             ->whereNull('deleted_at');
                     })
             ],
+            'template_id' => [
+                'exists:templates,template_id'
+            ]
         ];
     }
 }

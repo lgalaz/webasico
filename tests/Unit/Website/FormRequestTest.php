@@ -130,18 +130,6 @@ class FormRequestTest extends TestCase
         $this->assertNotContains('template_id', $validator->errors()->keys());
     }
 
-    public function test_template_id_must_be_an_integer_grater_than_zero()
-    {
-        $invalidValues = ['a', 2.5, false, [], 0, -1];
-
-        foreach ($invalidValues as $invalidValue) {
-            $validator = Validator::make(['template_id' => $invalidValue], $this->request->rules());
-
-            $this->assertFalse($validator->passes());
-            $this->assertContains('template_id', $validator->errors()->keys());
-        }
-    }
-
     public function test_it_fails_when_template_id_does_not_exist()
     {
         $invalidTemplate  = 1000;

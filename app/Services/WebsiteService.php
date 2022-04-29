@@ -11,7 +11,7 @@ class WebsiteService
     public function store(Account $account, array $params) : Website
     {
         $params['account_id'] = $account->account_id;
-        $params['template_id']  = Template::where('name', '=', 'custom')
+        $params['template_id'] = Template::where('name', '=', 'custom')
             ->firstOrFail()
             ->template_id;
 
